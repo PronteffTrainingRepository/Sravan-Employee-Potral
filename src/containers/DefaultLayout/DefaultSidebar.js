@@ -1,10 +1,23 @@
 import React, { Component } from "react";
-import {footer, NavItem, NavLink, Navbar, Nav } from "reactstrap";
+import { NavItem, NavLink, Navbar, Nav } from "reactstrap";
+
+const footer = {
+  position: "fixed",
+  left: "0",
+  bottom: " 0",
+  backgroundColor: "black",
+  color: "white",
+  height: "40px",
+  width: "150px",
+  borderRadius: "20px",
+
+  textAlign: "center",
+};
 
 export class DefaultSidebar extends Component {
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", lineHeight: "0.8" }}>
         <div>
           <br />
           <img
@@ -19,34 +32,66 @@ export class DefaultSidebar extends Component {
         </div>
         <br />
         <div>
-          <Navbar color="faded" light toggleable={true}>
-            <Nav navbar >
+          <Navbar color="black" light toggleable={true}>
+            <Nav navbar>
               <NavItem>
-                <NavLink href="#">Home</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Projects Details</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Projects Details
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Intrests</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Intrests
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Github</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Github
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Hobbies</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Hobbies
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Form</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Form
+                </NavLink>
               </NavItem>
               <NavItem style={{ position: "bottom" }}>
-                <NavLink href="#">Loans</NavLink>
+                <NavLink style={{ color: "white" }} href="#">
+                  Loans
+                </NavLink>
+              </NavItem>
+              <NavItem style={{ position: "bottom" }}>
+                <NavLink>
+                  <button style={footer}>Logout</button>
+                </NavLink>
               </NavItem>
             </Nav>
           </Navbar>
-          <footer class="col-sm-12 col-md-12 col-lg-12 bordered footer">
-           <button style>Logout</button>
-          </footer>
+          {/* <footer
+            style={footer}
+            class="col-sm-12 col-md-12 col-lg-12 bordered footer"
+          >
+            <button
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                height: "40px",
+                width: "150px",
+                borderRadius: "20px",
+              }}
+            >
+              Logout
+            </button>
+          </footer> */}
         </div>
       </div>
     );

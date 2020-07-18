@@ -46,12 +46,15 @@ class DefaultLayout extends Component {
           <AppSidebar fixed display="lg">
             <AppSidebarHeader />
             <AppSidebarForm />
+            <h1>hi</h1>
             <Suspense>
               <AppSidebarNav
-                
-              ><DefaultSidebar/></AppSidebarNav>
+                navConfig={navigation}
+                {...this.props}
+                router={router}
+              />
             </Suspense>
-            <AppSidebarFooter />
+            <AppSidebarFooter ><p>sahkdas</p></AppSidebarFooter>
             <AppSidebarMinimizer />
           </AppSidebar>
           <main className="main">
@@ -60,7 +63,7 @@ class DefaultLayout extends Component {
               <Suspense fallback={this.loading()}>
                 <Switch>
                   {routes.map((route, idx) => {
-                    console.log(route.path)
+                    console.log(route.path);
                     return route.component ? (
                       <Route
                         key={idx}
@@ -70,7 +73,6 @@ class DefaultLayout extends Component {
                         render={(props) => <route.component {...props} />}
                       />
                     ) : null;
-                    
                   })}
                   <Redirect from="/" to="/login" />
                 </Switch>
