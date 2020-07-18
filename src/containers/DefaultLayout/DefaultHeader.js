@@ -13,8 +13,7 @@ import {
 import PropTypes from "prop-types";
 
 import {
- 
- 
+
   AppSidebarToggler,
 } from "@coreui/react";
 import logo from "../../assets/img/icon.png";
@@ -60,11 +59,7 @@ class DefaultHeader extends Component {
               </Badge>
             </NavLink>
           </NavItem>
-          <NavItem className="d-md-down-none">
-            <NavLink to="#" className="nav-link">
-              <i className="icon-list"></i>
-            </NavLink>
-          </NavItem>
+          
 
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>

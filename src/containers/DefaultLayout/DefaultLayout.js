@@ -19,6 +19,7 @@ import {
 import navigation from "../../_nav";
 // routes config
 import routes from "../../routes";
+import DefaultSidebar from "./DefaultSidebar";
 
 const DefaultFooter = React.lazy(() => import("./DefaultFooter"));
 const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
@@ -47,10 +48,8 @@ class DefaultLayout extends Component {
             <AppSidebarForm />
             <Suspense>
               <AppSidebarNav
-                navConfig={navigation}
-                {...this.props}
-                router={router}
-              />
+                
+              ><DefaultSidebar/></AppSidebarNav>
             </Suspense>
             <AppSidebarFooter />
             <AppSidebarMinimizer />
@@ -61,6 +60,7 @@ class DefaultLayout extends Component {
               <Suspense fallback={this.loading()}>
                 <Switch>
                   {routes.map((route, idx) => {
+                    console.log(route.path)
                     return route.component ? (
                       <Route
                         key={idx}
@@ -70,8 +70,9 @@ class DefaultLayout extends Component {
                         render={(props) => <route.component {...props} />}
                       />
                     ) : null;
+                    
                   })}
-                  <Redirect from="/" to="/login" /
+                  <Redirect from="/" to="/login" />
                 </Switch>
               </Suspense>
             </Container>

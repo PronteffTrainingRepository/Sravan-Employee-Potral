@@ -9,11 +9,13 @@ export default {
         text: "NEW",
       },
     },
+   
 
     {
       title: true,
       name: "Extras",
     },
+   
     {
       name: "Pages",
       url: "/pages",

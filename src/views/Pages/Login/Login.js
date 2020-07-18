@@ -79,7 +79,7 @@ class Login extends Component {
     const isValid = this.validate();
     if (isValid) {
       // return <Redirect to="/dashboard/" />;
-      this.props.history.push("/dashboard/");
+      this.props.history.push("/dashboard");
     } else {
       console.log(this.event);
     }
