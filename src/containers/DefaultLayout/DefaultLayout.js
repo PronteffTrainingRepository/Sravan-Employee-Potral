@@ -2,6 +2,7 @@ import React, { Component, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import * as router from "react-router-dom";
 import { Container } from "reactstrap";
+import { FaPowerOff } from "react-icons/fa";
 
 import {
   AppAside,
@@ -19,12 +20,113 @@ import {
 import navigation from "../../_nav";
 // routes config
 import routes from "../../routes";
-import DefaultSidebar from "./DefaultSidebar";
+
 
 const DefaultFooter = React.lazy(() => import("./DefaultFooter"));
 const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
 
+const ImgUpload = ({ onChange, src }) => {
+  return (
+    <label>
+      <div>
+        <img
+          for="photo-upload"
+          src={src}
+          style={{
+            height: "100px",
+            width: "100px",
+            borderRadius: "50%",
+            
+          }}
+        />
+      </div>
+      <input id="photo-upload" type="file" hidden onChange={onChange} />
+    </label>
+  );
+};
+
+const Status = ({ onChange }) => (
+  <div className="field">
+    <input
+      id="status"
+      type="text"
+      onChange={onChange}
+      maxLength="35"
+      value="active"
+      placeholder="It's a nice day!"
+      hidden
+    />
+  </div>
+);
+
+const Profile = ({ onChange, src, status }) => (
+  <div
+    style={{
+      backgroundColor: "#2F353A",
+    }}
+  >
+    <form onSubmit={onChange}>
+      <div>
+        <button type="submit" className="edit">
+          <img
+            for="photo-upload"
+            src={src}
+            style={{
+              height: "100px",
+              width: "100px",
+              borderRadius: "50%",
+              backgroundColor: "#2F353A",
+            }}
+          />
+        </button>
+      </div>
+
+      <div className="status">{status}</div>
+    </form>
+  </div>
+);
+
+const Edit = ({ onChange, children }) => (
+  <form onSubmit={onChange}>{children}</form>
+);
+
 class DefaultLayout extends Component {
+  state = {
+    file: "",
+    imagePreviewUrl: "https://source.unsplash.com/random",
+    name: "",
+    status: "",
+    active: "edit",
+  };
+
+  photoUpload = (e) => {
+    e.preventDefault();
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result,
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  editStatus = (e) => {
+    const status = e.target.value;
+    this.setState({
+      status,
+    });
+  };
+
+  handleonChange = (e) => {
+    e.preventDefault();
+    let activeP = this.state.active === "edit" ? "profile" : "edit";
+    this.setState({
+      active: activeP,
+    });
+  };
+
   loading = () => (
     <div className="animated fadeIn pt-1 text-center">Loading...</div>
   );
@@ -35,6 +137,8 @@ class DefaultLayout extends Component {
   }
 
   render() {
+    const { imagePreviewUrl, name, status, active } = this.state;
+
     return (
       <div className="app">
         <AppHeader fixed>
@@ -46,7 +150,44 @@ class DefaultLayout extends Component {
           <AppSidebar fixed display="lg">
             <AppSidebarHeader />
             <AppSidebarForm />
-            <h1>hi</h1>
+            <br />
+            <div style={{ textAlign: "center", backgroundColor: "#2F353A", }}>
+              <div>
+                {active === "edit" ? (
+                  <Edit onChange={this.handleChanonChange}>
+                    <ImgUpload
+                      style={{
+                        height: "100px",
+                        width: "100px",
+
+                        backgroundColor: "#2F353A",
+                        borderRadius: "50%",
+                      }}
+                      onChange={this.photoUpload}
+                      src={imagePreviewUrl}
+                    />
+
+                    <Status onChange={this.editStatus} value={status} />
+                  </Edit>
+                ) : (
+                  <Profile
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      backgroundColor: "#2F353A",
+                    }}
+                    onChange={this.handleChanonChange}
+                    src={imagePreviewUrl}
+                    name={name}
+                    status={status}
+                  />
+                )}
+              </div>
+
+              <h5>Meera Krishnan</h5>
+              <a href="">view Profile</a>
+            </div>{" "}
+            <br />
             <Suspense>
               <AppSidebarNav
                 navConfig={navigation}
@@ -54,8 +195,24 @@ class DefaultLayout extends Component {
                 router={router}
               />
             </Suspense>
-            <AppSidebarFooter ><p>sahkdas</p></AppSidebarFooter>
-            <AppSidebarMinimizer />
+            <AppSidebarFooter>
+              <div style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  style={{
+                    width: "120px",
+                    height: "40px",
+                    borderRadius: "40px",
+                    backgroundColor: "black",
+                    color: "whiteSmoke",
+                    border: "0",
+                  }}
+                >
+                  <FaPowerOff /> Logout
+                </button>
+              </div>
+            </AppSidebarFooter>
+            {/* <AppSidebarMinimizer /> */}
           </AppSidebar>
           <main className="main">
             <AppBreadcrumb appRoutes={routes} router={router} />

@@ -1,18 +1,20 @@
+
 export default {
   items: [
     {
       name: "Home",
-      url: "/dashboard",
-      icon: "icon-speedometer",
-      badge: {
-        variant: "info",
-        text: "NEW",
-      },
+      url: "/home",
+      icon: "icon-home",
+
+      // badge: {
+      //   variant: "info",
+      //   text: "NEW",
+      // },
     },
     {
       name: "Salary Details",
       url: "/salary",
-      icon: "icon-speedometer",
+      icon: "icon-credit-card",
     },
     {
       name: "Investments",
@@ -20,19 +22,19 @@ export default {
       icon: "icon-speedometer",
     },
     {
-      name: "Reimbusements",
-      url: "/reimbus",
-      icon: "icon-speedometer",
+      name: "Feed",
+      url: "/feed",
+      icon: "icon-feed",
     },
     {
       name: "Form",
       url: "/form",
-      icon: "icon-speedometer",
+      icon: "icon-note",
     },
     {
       name: "Loan",
       url: "/loan",
-      icon: "icon-speedometer",
+      icon: "icon-credit-card",
     },
 
     {
