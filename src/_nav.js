@@ -1,4 +1,3 @@
-
 export default {
   items: [
     {
@@ -17,9 +16,9 @@ export default {
       icon: "icon-credit-card",
     },
     {
-      name: "Investments",
-      url: "/invest",
-      icon: "icon-speedometer",
+      name: "Co-Workers",
+      url: "/coworkers",
+      icon: "icon-people",
     },
     {
       name: "Feed",

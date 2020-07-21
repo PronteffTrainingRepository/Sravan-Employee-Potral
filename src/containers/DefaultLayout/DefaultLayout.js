@@ -21,7 +21,6 @@ import navigation from "../../_nav";
 // routes config
 import routes from "../../routes";
 
-
 const DefaultFooter = React.lazy(() => import("./DefaultFooter"));
 const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
 
@@ -36,7 +35,6 @@ const ImgUpload = ({ onChange, src }) => {
             height: "100px",
             width: "100px",
             borderRadius: "50%",
-            
           }}
         />
       </div>
@@ -151,7 +149,7 @@ class DefaultLayout extends Component {
             <AppSidebarHeader />
             <AppSidebarForm />
             <br />
-            <div style={{ textAlign: "center", backgroundColor: "#2F353A", }}>
+            <div style={{ textAlign: "center", backgroundColor: "#2F353A" }}>
               <div>
                 {active === "edit" ? (
                   <Edit onChange={this.handleChanonChange}>
@@ -184,7 +182,7 @@ class DefaultLayout extends Component {
                 )}
               </div>
 
-              <h5>Meera Krishnan</h5>
+              <h5>Employee Name</h5>
               <a href="">view Profile</a>
             </div>{" "}
             <br />

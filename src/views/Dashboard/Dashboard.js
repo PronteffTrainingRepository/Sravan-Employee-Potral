@@ -6,9 +6,52 @@ import { FiList } from "react-icons/fi";
 import { Dropdown } from "react-bootstrap";
 import { Button, Container, Col, Row, Table } from "reactstrap";
 import empimg from "../../assets/img/emp2.jfif";
-import { CustomTooltips } from "@coreui/coreui-plugin-chartjs-custom-tooltips";
+import Chart from "react-google-charts";
 
 let time = new Date().toLocaleString();
+
+const options1 = {
+  title: "Working Hours Analysis",
+  curveType: "function",
+  legend: { position: "bottom" },
+  vAxis: { ticks: [2, 4, 6, 8, 10] },
+  pointShape: { type: "star", sides: 5 },
+  pointSize: "40px",
+  animation: {
+    startup: true,
+    easing: "linear",
+    duration: 2500,
+  },
+};
+const data1 = [
+  ["week", "WorkedHours", "RequiredHours"],
+  ["Monday", 8.5, 8],
+  ["Tuesday", 6.2, 8],
+  ["Wednesday", 9.2, 8],
+  ["Thursday", 7.4, 8],
+  ["Friday", 9, 8],
+  ["Saturday", 6.1, 8],
+];
+const data = [
+  ["Subject", "Completed in Days", "Client Expected Days"],
+  ["Ui", 9, 10],
+  ["BackEnd", 20, 25],
+  ["API ", 28, 35],
+  ["Testing", 42, 45],
+  ["Deployment", 55, 60],
+];
+const options = {
+  title: "Perfomance Analysis",
+  curveType: "function",
+  legend: { position: "bottom" },
+  pointSize: "40px",
+  pointShape: { type: "square" },
+  animation: {
+    startup: true,
+    easing: "linear",
+    duration: 2500,
+  },
+};
 
 class Dashboard extends Component {
   constructor(props) {
@@ -138,9 +181,9 @@ class Dashboard extends Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item href="#/action-1">Sort By Name</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Sort By Date</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Most Recent</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Col>
@@ -204,9 +247,33 @@ class Dashboard extends Component {
                 <td>task</td>
                 <td>task</td>
               </tr>
-              
             </tbody>
           </Table>
+        </Row>
+        <div style={{ textAlign: "center" }}>
+          {" "}
+          <h3 style={{ color: "coral" }}>Working Analysis Graphs</h3>
+        </div>
+
+        <Row>
+          <Col md="6" lg="6">
+            <Chart
+              chartType="AreaChart"
+              width="100%"
+              height="400px"
+              data={data1}
+              options={options1}
+            />
+          </Col>
+          <Col md="6" lg="6">
+            <Chart
+              chartType="LineChart"
+              width="100%"
+              height="400px"
+              data={data}
+              options={options}
+            />
+          </Col>
         </Row>
       </Container>
     );
