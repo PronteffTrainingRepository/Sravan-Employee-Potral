@@ -31,37 +31,9 @@ export default {
       icon: "icon-note",
     },
     {
-      name: "Loan",
-      url: "/loan",
-      icon: "icon-credit-card",
-    },
-
-    {
-      title: true,
-      name: "Extras",
-    },
-
-    {
-      name: "Pages",
-      url: "/pages",
-      icon: "icon-list",
-      children: [
-        {
-          name: "Login",
-          url: "/login",
-          icon: "icon-login",
-        },
-        {
-          name: "Register",
-          url: "/register",
-          icon: "icon-plus",
-        },
-        {
-          name: "Error 404",
-          url: "/404",
-          icon: "icon-ban",
-        },
-      ],
+      name: "Profile",
+      url: "/profile",
+      icon: "icon-user",
     },
   ],
 };

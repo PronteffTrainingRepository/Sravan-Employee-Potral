@@ -1,18 +1,16 @@
 import React, { Component, Suspense } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, Link, NavLink } from "react-router-dom";
 import * as router from "react-router-dom";
 import { Container } from "reactstrap";
 import { FaPowerOff } from "react-icons/fa";
 
 import {
-  AppAside,
   AppFooter,
   AppHeader,
   AppSidebar,
   AppSidebarFooter,
   AppSidebarForm,
   AppSidebarHeader,
-  AppSidebarMinimizer,
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from "@coreui/react";
@@ -183,7 +181,9 @@ class DefaultLayout extends Component {
               </div>
 
               <h5>Employee Name</h5>
-              <a href="">view Profile</a>
+              <NavLink to="/profile">
+                <a> view Profile</a>
+              </NavLink>
             </div>{" "}
             <br />
             <Suspense>
@@ -195,19 +195,21 @@ class DefaultLayout extends Component {
             </Suspense>
             <AppSidebarFooter>
               <div style={{ textAlign: "center" }}>
-                <button
-                  type="submit"
-                  style={{
-                    width: "120px",
-                    height: "40px",
-                    borderRadius: "40px",
-                    backgroundColor: "black",
-                    color: "whiteSmoke",
-                    border: "0",
-                  }}
-                >
-                  <FaPowerOff /> Logout
-                </button>
+                <a href={/login/}>
+                  <button
+                    type="submit"
+                    style={{
+                      width: "120px",
+                      height: "40px",
+                      borderRadius: "40px",
+                      backgroundColor: "black",
+                      color: "whiteSmoke",
+                      border: "0",
+                    }}
+                  >
+                    <FaPowerOff /> Logout
+                  </button>
+                </a>
               </div>
             </AppSidebarFooter>
             {/* <AppSidebarMinimizer /> */}

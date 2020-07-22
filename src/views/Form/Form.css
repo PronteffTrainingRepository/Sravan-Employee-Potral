@@ -1,0 +1,8 @@
+.thover tbody tr:hover td {
+  background: rgb(32, 82, 102);
+  color: white;
+}
+
+thover {
+  background-color: "red";
+}
